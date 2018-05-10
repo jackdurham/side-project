@@ -11,6 +11,7 @@
     "start": "yarn webpack-dev-server"
   },
   "dependencies": {
+    "bluebird": "^3.5.1",
     "bootstrap-css-only": "^3.3.7",
     "mongoose": "^5.0.18",
     "react": "^15.6.1",
