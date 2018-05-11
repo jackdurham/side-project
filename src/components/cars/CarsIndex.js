@@ -11,6 +11,7 @@ class CarsIndex extends Component {
       .get('/api/cars')
       .then(res => this.setState({ cars: res.data }))
       .catch(err => console.log(err));
+      console.log(res);
   }
 
   render() {

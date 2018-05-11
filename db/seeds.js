@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
+const { db, env } = require('../config/environment');
+const Car = require('../models/car');
 
-const { dbURI } = require('../config/environment');
-const Car       = require('../models/car');
+mongoose.connect(db[env]);
 
-const carData = [{
+// Car.collection.drop();
+
+Car
+.create([{
   make: 'DeLorean',
   model: 'DMC-12',
   image: 'http://momentcar.com/images250_/delorean-11.jpg'
@@ -28,12 +32,11 @@ const carData = [{
   make: '1982 Pontic',
   model: 'Firebird',
   image: 'https://www.jekame-novedades-led.com/26-home_default/strip-scanner-48-led-5050-knight-rider-7-colors.jpg'
-}];
-
-mongoose
-  .connect(dbURI, { useMongoClient: true })
-  .then(db => db.dropDatabase())
-  .then(() => Car.create(carData))
-  .then(foods => console.log(`${cars.length} cars created!`))
-  .catch(err => console.log(err))
-  .finally(() => mongoose.connection.close());
+}])
+.then((cars) => {
+    console.log(`${cars.length} cars created!`);
+  })
+  .finally(() => {
+    return mongoose.connection.close();
+  })
+  .catch(err => console.log(err));

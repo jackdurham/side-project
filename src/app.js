@@ -2,7 +2,7 @@ import React    from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
 
-import CarsIndex from './components/cars/CarsIndex';
+import Routes from './components/utility/Routes';
 
 class App extends React.Component {
   render() {
@@ -13,7 +13,7 @@ class App extends React.Component {
             <h1>Famous Movie Cars</h1>
           </header>
           <main>
-            <Route exact path="/" component={CarsIndex} />
+            <Routes />
           </main>
         </div>
       </Router>
